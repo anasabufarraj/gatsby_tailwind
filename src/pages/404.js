@@ -1,49 +1,31 @@
-import * as React from "react"
-import { Link } from "gatsby"
+//------------------------------------------------------------------------------
+// Copyright (c) 2023. Anas Abu Farraj.
+//------------------------------------------------------------------------------
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+import React from 'react'
+import { Link } from 'gatsby'
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-const NotFoundPage = () => {
+const Index = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
+    <div className={'container'}>
+      <h1 className={'mb-2 text-5xl'}>Page not found</h1>
+      <p className={'text-slate-500'}>
+        <Link to={'/'} className={'cursor-pointer duration-300 hover:text-rose-500/75'}>
+          Go Home
+        </Link>
       </p>
-    </main>
+    </div>
   )
 }
 
-export default NotFoundPage
+export default Index
 
-export const Head = () => <title>Not found</title>
+export const Head = () => (
+  <React.Fragment>
+    <html className={'scroll-smooth'} lang={'en'} />
+    <title>Page not found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name={'description'} content={'Hello World'} />
+    <link rel={'apple-touch-icon'} href={'/images/icon.png'} />
+  </React.Fragment>
+)
