@@ -7,24 +7,24 @@ import React from 'react'
 const Index = () => {
   return (
     <div className={'container mx-auto'}>
-      <h1 className={'mb-2 text-5xl'}>Hello! Tailwind CSS</h1>
-      <h3 className={'text-3xl text-slate-500'}   >
-        Gatsby 5 Project
+      <h1 className={'text-4xl mb-2 '}>Hello! Gatsby</h1>
+      <h3 className={'text-xl text-slate-500'}>
+        Using Tailwind CSS
       </h3>
 
-      {/* peer names */}
+      {/* DOC: Peer Names */}
       <hr className={'my-3 opacity-30'}/>
       <form className={'py-5'} action={'post'}>
         <fieldset>
           <legend>Published status</legend>
 
           <input id={'draft'} className={'peer/draft me-2'} type={'radio'} name={'status'} checked readOnly/>
-          <label htmlFor={'draft'} className={'peer-checked/draft:text-sky-500 mr-2 cursor-pointer'}>
+          <label htmlFor={'draft'} className={'peer-checked/draft:text-sky-500 mr-2'}>
             Draft
           </label>
 
           <input id={'published'} className={'peer/published me-2'} type={'radio'} name={'status'}/>
-          <label htmlFor={'published'} className={'peer-checked/published:text-sky-500 cursor-pointer'}>
+          <label htmlFor={'published'} className={'peer-checked/published:text-sky-500'}>
             Published
           </label>
 
@@ -35,7 +35,7 @@ const Index = () => {
         </fieldset>
       </form>
 
-      {/* list markers */}
+      {/* DOC: List Markers */}
       <hr className={'my-3 opacity-30'}/>
       <div>
         <ul className={'marker:text-sky-400 list-inside list-decimal space-y-1'}>
@@ -45,33 +45,35 @@ const Index = () => {
         </ul>
       </div>
 
-      {/* dialog */}
-      {/*  DOC: It is recommended to use .show() method to render dialogs, rather than the 'open' attribute. */}
-      {/*<dialog className={'absolute top-0 z-50 h-full w-full open:bg-slate-900/50 open:supports-[backdrop-filter]:backdrop-blur-sm'} open={true}>*/}
-      {/*  <div className={'mx-auto mt-10 h-96 w-96 rounded-xl bg-white p-5 shadow-xl'}>*/}
+      {/* DOC: Dialog */}
+      {/* buttons can only close the dialog if method="dialog" is set */}
+      {/* It is recommended to use a .show() method to render dialogs, rather than the 'open' attribute.*/}
+      {/*<dialog*/}
+      {/*  className={'absolute top-0 z-50 h-full w-full open:bg-black/60 open:supports-[backdrop-filter]:backdrop-blur-sm'}*/}
+      {/*  open={true}>*/}
+      {/*  <div className={'mx-auto mt-10 h-96 w-auto rounded-xl bg-white p-5 mx-24 shadow-xl'}>*/}
       {/*    <form method={'dialog'}>*/}
-      {/*      /!* DOC: buttons can only close the dialog if method="dialog" is set *!/*/}
       {/*      <legend>Hello HTML5 Dialog!</legend>*/}
       {/*      <button className={'absolute right-5 top-4 text-slate-500'}>Close</button>*/}
       {/*    </form>*/}
       {/*  </div>*/}
       {/*</dialog>*/}
 
-      {/* reduce motion */}
-      <hr className={'my-3 opacity-30'}/>
+      {/* DOC: Reduce Motion */}
       {/*<div className={'motion-safe:animate-spin'}>x</div>*/}
 
-      {/* increase contrast */}
+      {/* DOC: Increase Contrast */}
       <p className={'text-slate-400 mt-2 text-sm opacity-40 contrast-more:opacity-100'}>We need to steal your
-        identity.</p>
+        identity.
+      </p>
 
-      {/* aria states */}
+      {/* DOC: Aria States */}
       <hr className={'my-3 opacity-30'}/>
       <div aria-checked={true} className={'aria-checked:bg-sky-500 p-2'}>
-        ARIA
+        ARIA Checked
       </div>
 
-      {/* data attributes (custom attribute) */}
+      {/* DOC: Data Attributes (custom attribute) */}
       <hr className={'my-3 opacity-30'}/>
       <ul className={'space-y-1'}>
         <li data-padding={'large'} className={'bg-sky-500 data-[padding=large]:p-4 data-[padding=normal]:p-2'}>
@@ -82,18 +84,47 @@ const Index = () => {
         </li>
       </ul>
 
-      {/* arbitrary CSS properties */}
+      {/* DOC: Arbitrary CSS Properties */}
       <hr className={'my-3 opacity-30'}/>
       <p className={'text-[color:coral] hover:text-[color:skyblue]'}>Arbitrary CSS Properties</p>
       <p className={'my-1 p-2 text-[color:coral] [border:1px_solid_coral] [opacity:0.5]'}>
         This is like inline styles, but with the benefit that you can use modifiers.
       </p>
 
-      {/* DOC: by default Tailwind converts underscore to whitespace, if you want to keep it, use one of the following */}
-      <p className={`after:content-['hello\\_world']`}>Method 1...</p>
-      <p className={String.raw`after:content-['hello\_world']`}>Method 2...</p>
+      {/* DOC: Escaping */}
+      {/* By default, Tailwind converts underscore to whitespace, if you want to keep it, use double escaping */}
+      {/* Or use the String.raw method */}
+      <p className={`after:content-['Hello_World']`}>01. </p>
+      <p className={`after:content-['Hello\\_World']`}>02. </p>
+      <p className={String.raw`after:content-['Hello\_World']`}>03. </p>
 
-      {/* end */}
+      {/* DOC: Break-After- / Break-before- */}
+      <div className="columns-2">
+        <p className={'border'}>This is a paragraph of text that will be broken into two columns.</p>
+        <p className={'break-after-column border border-red-500'}>This is another paragraph of text.</p>
+        <p className={'border'}>This is the third paragraph of text.</p>
+        <p className={'border'}>This is the fourth paragraph of text.</p>
+        <p className=" border">This is the fifth paragraph of text.</p>
+        <p className={'border'}>This is the sixth paragraph of text, and it will also be broken into two columns.</p>
+      </div>
+
+      {/* DOC: Box Decoration */}
+      <span
+        className="box-decoration-slice bg-gradient-to-r from-indigo-600 to-pink-500 text-white px-8">This is<br/>the default</span><br/>
+      <span
+        className="box-decoration-clone bg-gradient-to-r from-indigo-600 to-pink-500 text-white px-8">Hello<br/>World</span>
+
+      {/* DOC: Contents */}
+      <div className="flex gap-2">
+        <div className="flex-1 bg-pink-500">01</div>
+        <div className="contents">
+          <div className="flex-1 bg-pink-500">02</div>
+          <div className="flex-1 bg-pink-500">03</div>
+        </div>
+        <div className="flex-1 bg-pink-500">04</div>
+      </div>
+
+
     </div>
   )
 }
