@@ -124,6 +124,21 @@ const Index = () => {
         <div className="flex-1 bg-pink-500">04</div>
       </div>
 
+      <div className="p-4 border">
+        <div className="flow-root border">
+          <div className="my-4">Well, let me tell you something, funny boy. Y'know that little stamp, the one that says
+            "New York Public Library"? Well that may not mean anything to you, but that means a lot to me. One whole
+            hell of a lot.
+          </div>
+        </div>
+        <div className="flow-root border">
+          <div className="my-4">Sure, go ahead, laugh if you want to. I've seen your type before: Flashy, making the
+            scene, flaunting convention. Yeah, I know what you're thinking. What's this guy making such a big stink
+            about old library books? Well, let me give you a hint, junior.
+          </div>
+        </div>
+      </div>
+
 
     </div>
   )

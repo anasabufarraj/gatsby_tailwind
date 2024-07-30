@@ -2,19 +2,29 @@
 // Copyright (c) 2023. Anas Abu Farraj.
 //------------------------------------------------------------------------------
 
-import React, {useState} from 'react'
-import {handleDarkMode} from '../../utilities/functions'
+import React, {useState, useEffect} from 'react'
 
 const Layout = ({children}) => {
-  const isDark = typeof window !== 'undefined' || window.matchMedia('(prefers-color-scheme: dark)').matches
+  const [dark, setDark] = useState(false)
+  const [icon, setIcon] = useState('🌚')
 
-  const [dark, setDark] = useState(isDark ? 'dark' : '')
-  const [icon, setIcon] = useState(isDark ? '🌞' : '🌚')
+  useEffect(() => {
+    const browser = typeof window !== 'undefined'
+    const isDark = browser && window.matchMedia('(prefers-color-scheme: dark)').matches
+
+    setDark(isDark)
+    setIcon(isDark ? '🌞' : '🌚')
+  }, [])
+
+  const toggleDarkMode = () => {
+    setDark((mode) => !mode)
+    setIcon((icon) => (icon === '🌚' ? '🌞' : '🌚'))
+  }
 
   return (
     <div className={`${dark ? 'dark:bg-slate-900 dark:text-slate-100' : ''} min-h-screen px-6 py-8 duration-300`}>
       <button className={'absolute right-5 text-2xl active:opacity-90'}
-              onClick={() => handleDarkMode(dark, setDark, setIcon)}>
+              onClick={() => toggleDarkMode(dark, setDark, setIcon)}>
         {icon}
       </button>
       {children}
